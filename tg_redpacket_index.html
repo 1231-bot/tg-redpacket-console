@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17152b">
+<title>TG 红包控制台</title>
+<script src="https://telegram.org/js/telegram-web-app.js?64"></script>
+<style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light dark;--brand:#8057ed;--bg:light-dark(#f6f4fc,#11101a);--surface:light-dark(#fff,#1b1927);--text:light-dark(#211d32,#f4f1fc);--muted:light-dark(#79738b,#aaa3be);--line:light-dark(#e9e5f2,#353044);--soft:light-dark(#f0eaff,#302544);--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text)}button{font:inherit;cursor:pointer}.app{min-height:100vh;padding-top:var(--safe-top);padding-bottom:var(--safe-bottom);background:var(--bg)}.header{padding:20px 18px 25px;background:#17152b;color:#fff;border-radius:0 0 25px 25px}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;gap:11px;align-items:center;font-size:16px;font-weight:800}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#a88bff,#7042df);display:grid;place-items:center;font-size:21px;box-shadow:0 8px 24px #8057ed55}.avatar{font-size:12px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#ddd6f3;border:1px solid #ffffff25;border-radius:30px;padding:8px 10px}.eyebrow{font-size:10px;letter-spacing:1.6px;font-weight:800;color:#bba7ff;margin-top:25px}.header h1{font-size:29px;letter-spacing:-.8px;margin:7px 0}.header p{font-size:13px;line-height:1.6;color:#bcb5d0;margin:0;max-width:350px}.wrap{padding:18px 15px 28px;max-width:900px;margin:auto}.warning{display:flex;gap:10px;border:1px solid light-dark(#efdcae,#554629);background:light-dark(#fff8e8,#312919);padding:13px 14px;border-radius:15px;color:var(--text);font-size:12px;line-height:1.65;margin:0 0 18px}.warning .symbol{font-size:18px}.section-title{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 12px}.section-title h2{font-size:16px;margin:0}.section-title span{font-size:11px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.stat{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:16px;min-height:112px}.statlabel{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}.miniicon{width:28px;height:28px;background:var(--soft);border-radius:9px;display:grid;place-items:center;color:var(--brand);font-size:14px}.value{font-size:25px;font-weight:800;margin-top:12px;letter-spacing:-.5px}.under{font-size:11px;color:var(--muted);margin-top:5px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.module{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.module:last-child{border-bottom:0;padding-bottom:1px}.micon{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:var(--soft);font-size:18px;flex-shrink:0}.mcopy{min-width:0;flex:1}.mcopy strong{display:block;font-size:13px}.mcopy small{display:block;font-size:11px;color:var(--muted);line-height:1.5;margin-top:5px}.badge{font-size:10px;font-weight:700;padding:5px 8px;border-radius:8px;color:light-dark(#9b6204,#ffd078);background:light-dark(#fff0d6,#3a2c18);white-space:nowrap}.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.action{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:15px;padding:15px 13px;text-align:left;display:flex;align-items:center;gap:10px;min-height:64px}.action .micon{width:34px;height:34px}.action span:last-child{font-size:12px;font-weight:700}.foot{font-size:11px;line-height:1.7;color:var(--muted);text-align:center;padding:19px 10px 8px}.modal{position:fixed;inset:0;z-index:9;background:#080612aa;display:none;align-items:flex-end;justify-content:center;padding:14px}.modal.open{display:flex}.sheet{width:min(560px,100%);background:var(--surface);color:var(--text);padding:22px;border:1px solid var(--line);border-radius:22px}.sheet h3{font-size:17px;margin:0 0 9px}.sheet p{font-size:13px;line-height:1.75;color:var(--muted);margin:0}.sheet button{margin-top:18px;width:100%;border:0;border-radius:13px;padding:13px;background:var(--brand);color:white;font-weight:800}@media(min-width:640px){.header{padding:25px max(24px,calc((100vw - 860px)/2)) 30px}.wrap{padding:24px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.quick{grid-template-columns:repeat(4,minmax(0,1fr))}.header h1{font-size:34px}.stat{min-height:120px}}
+</style>
+</head>
+<body>
+<div class="app">
+ <header class="header">
+  <div class="topline"><div class="brand"><div class="logo">✦</div><span>TG 红包控制台</span></div><div class="avatar" id="userLabel">Telegram Mini App</div></div>
+  <div class="eyebrow">REWARD CONSOLE · MINI APP</div>
+  <h1>红包运营总览</h1>
+  <p>把服务状态与常用入口放进 Telegram。接入真实数据前，请先完成后端部署和权限验证。</p>
+ </header>
+ <main class="wrap">
+  <div class="warning"><div class="symbol">ⓘ</div><div><b>当前为安全演示模式</b><br>页面尚未连接红包服务，不会自动抢红包、修改账户或读取本机控制台数据。下面的数字是占位符。</div></div>
+  <div class="section-title"><h2>运行概况</h2><span id="nowText">演示数据 · 未连接</span></div>
+  <div class="stats">
+   <div class="stat"><div class="statlabel"><span class="miniicon">▦</span>已连接群组</div><div class="value">—</div><div class="under">等待授权后端</div></div>
+   <div class="stat"><div class="statlabel"><span class="miniicon">✦</span>今日红包</div><div class="value">—</div><div class="under">数据接口未配置</div></div>
+   <div class="stat"><div class="statlabel"><span class="miniicon">↗</span>领取记录</div><div class="value">—</div><div class="under">数据接口未配置</div></div>
+   <div class="stat"><div class="statlabel"><span class="miniicon">◷</span>服务状态</div><div class="value" style="font-size:20px">未连接</div><div class="under">不代表实际服务状态</div></div>
+  </div>
+  <div class="section-title"><h2>控制台模块</h2><span>可逐步接入</span></div>
+  <div class="panel">
+   <div class="module"><div class="micon">⌁</div><div class="mcopy"><strong>服务连接</strong><small>部署 API 地址并验证可用性</small></div><span class="badge">待配置</span></div>
+   <div class="module"><div class="micon">♧</div><div class="mcopy"><strong>群组概览</strong><small>只显示当前用户有权限查看的群组</small></div><span class="badge">待接入</span></div>
+   <div class="module"><div class="micon">◷</div><div class="mcopy"><strong>运行记录</strong><small>查看经权限过滤的服务日志</small></div><span class="badge">待接入</span></div>
+   <div class="module"><div class="micon">⛨</div><div class="mcopy"><strong>访问安全</strong><small>需在服务端校验 Telegram initData 与用户权限</small></div><span class="badge">必须设置</span></div>
+  </div>
+  <div class="section-title"><h2>快捷入口</h2><span>演示操作</span></div>
+  <div class="quick">
+   <button class="action" data-modal="status"><span class="micon">◉</span><span>检查连接状态</span></button>
+   <button class="action" data-modal="records"><span class="micon">▤</span><span>查看运行记录</span></button>
+   <button class="action" data-modal="security"><span class="micon">⛨</span><span>安全说明</span></button>
+   <button class="action" id="closeBtn"><span class="micon">↩</span><span>返回 Telegram</span></button>
+  </div>
+  <div class="foot">TG 红包控制台 · Mini App Preview<br>真实后端尚未接入。请勿在网页中保存 Bot Token、API 密钥或登录会话。</div>
+ </main>
+</div>
+<div class="modal" id="modal"><div class="sheet"><h3 id="modalTitle">说明</h3><p id="modalBody"></p><button id="modalClose">我知道了</button></div></div>
+<script>
+(function(){
+ const tg = window.Telegram && window.Telegram.WebApp;
+ if(tg){
+   tg.ready(); tg.expand();
+   const u = tg.initDataUnsafe && tg.initDataUnsafe.user;
+   if(u){ document.getElementById('userLabel').textContent = u.first_name || u.username || 'Telegram 用户'; }
+   if(tg.setHeaderColor){try{tg.setHeaderColor('#17152b');}catch(e){}}
+ }
+ const messages={
+  status:['服务尚未连接','这是演示版，没有请求任何后端接口，因此不能判断真实红包服务是否在线。'],
+  records:['运行记录未接入','接入后应由服务端按用户权限返回日志，并隐藏 Token、验证码、会话字符串等敏感字段。'],
+  security:['安全说明','网页只显示 Telegram 客户端传来的资料，不把它当成可信身份。正式接入时，后端必须验证 Telegram.WebApp.initData 的签名和时效，再做用户/管理员权限校验。']
+ };
+ const modal=document.getElementById('modal');
+ document.querySelectorAll('[data-modal]').forEach(b=>b.addEventListener('click',()=>{const v=messages[b.dataset.modal];document.getElementById('modalTitle').textContent=v[0];document.getElementById('modalBody').textContent=v[1];modal.classList.add('open');}));
+ document.getElementById('modalClose').addEventListener('click',()=>modal.classList.remove('open'));
+ modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+ document.getElementById('closeBtn').addEventListener('click',()=>{if(tg&&tg.close)tg.close();else{document.getElementById('modalTitle').textContent='返回 Telegram';document.getElementById('modalBody').textContent='请关闭当前网页标签，回到 Telegram 机器人对话。';modal.classList.add('open');}});
+})();
+</script>
+</body>
+</html>
